@@ -11,6 +11,8 @@ nav.navbar.navbar-default
     #navbar.navbar-collapse.collapse
       ul.nav.navbar-nav
       - if user_signed_in?
+        ul.nav.navbar-nav.navbar-left
+          li= link_to "Upload Photo", :new_attachment
         ul.nav.navbar-nav.navbar-right
           li= link_to "Exit", destroy_user_session_path, method: :delete, data: {confirm: "Выйти?"}
       - else

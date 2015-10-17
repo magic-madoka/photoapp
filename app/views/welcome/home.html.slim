@@ -1,2 +1,8 @@
 - if user_signed_in?
   = current_user.authorizations.first.provider
+  h1 Your Photos
+  - current_user.attachments.each_slice(4) do |slice|
+    .row
+      - slice.each do |attach|
+        .col-md-3
+          = render attach, photo: attach

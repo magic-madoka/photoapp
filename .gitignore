@@ -15,3 +15,4 @@ Gemfile.lock
 /tmp
 /config/database.yml
 .env
+/public/uploads
