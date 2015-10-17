@@ -1,3 +1,6 @@
 .pop
   = image_tag(photo.photo, class: 'thumbnail img-responsive')
+  - photo.tags.each do |tag|
+    span.tag-links
+      span.label.label-primary= tag.tag_name
 = render 'attachments/modal'

@@ -1,4 +1,8 @@
 = simple_form_for @attachment do |f|
   = f.input :photo, type: :file
+  = f.simple_fields_for :tags do |tag|
+    = render 'tag_fields', f: tag
+    .links
+        = link_to_add_association 'Add more tags', f, :tags, class: 'btn btn-xs btn-success'
   br
   = f.submit 'Add Photo', class: 'btn btn-primary'

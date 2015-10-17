@@ -1,0 +1,6 @@
+.nested-fields
+  .col-md-4
+    .form-group
+      = f.input :tag_name, placeholder: 'Add more tags', input_html: { class: 'form-control' }
+  hr
+  = link_to_remove_association "Remove tag", f, class: 'btn btn-xs btn-danger'

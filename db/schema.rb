@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151017171717) do
+ActiveRecord::Schema.define(version: 20151017175234) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attachment_tags", force: :cascade do |t|
+    t.integer  "attachment_id"
+    t.integer  "tag_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "attachment_tags", ["attachment_id"], name: "index_attachment_tags_on_attachment_id", using: :btree
+  add_index "attachment_tags", ["tag_id"], name: "index_attachment_tags_on_tag_id", using: :btree
 
   create_table "attachments", force: :cascade do |t|
     t.integer  "user_id"
@@ -35,6 +45,12 @@ ActiveRecord::Schema.define(version: 20151017171717) do
 
   add_index "authorizations", ["user_id"], name: "index_authorizations_on_user_id", using: :btree
 
+  create_table "tags", force: :cascade do |t|
+    t.string   "tag_name",   default: ""
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -53,6 +69,8 @@ ActiveRecord::Schema.define(version: 20151017171717) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "attachment_tags", "attachments"
+  add_foreign_key "attachment_tags", "tags"
   add_foreign_key "attachments", "users"
   add_foreign_key "authorizations", "users"
 end

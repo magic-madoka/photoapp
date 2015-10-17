@@ -15,6 +15,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'carrierwave'
+gem 'cocoon'
 
 group :development, :test do
   gem 'rspec-rails'
