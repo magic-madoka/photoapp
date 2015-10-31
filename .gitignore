@@ -9,7 +9,6 @@
 
 # Ignore all logfiles and tempfiles.
 /log/*
-Gemfile.lock
 !/log/.keep
 /test
 /tmp
